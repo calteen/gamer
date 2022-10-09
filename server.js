@@ -1,12 +1,13 @@
-const app = require("./index");
+const express = require('express'); 
+const app = express();
+const port = process.env.PORT || 3000;
 
-const connect = require("./src/configs/db");
+app.get('/', (req, res)=>{ 
+    res.json({success: true});
+ });
 
-const PORT = process.env.PORT || 300;
 
-app.listen(PORT, async () => {
-  await connect().then(() =>{
-    console.log('mongodb connected')
-  });
-  console.log("listening to port", PORT);
+
+app.listen(port,()=>{
+    console.log('listening on port '+port);
 });
